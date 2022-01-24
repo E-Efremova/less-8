@@ -1,7 +1,9 @@
 package qa.efremova;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -12,6 +14,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.stream.Stream;
 
 public class ParameterizedWebTest {
+    @BeforeAll
+    static void beforeAll() {
+        Configuration.browserSize = "1920x1080";
+    }
+
     @DisplayName("Тестирование поиска фильмов")
     @ValueSource(strings = {"гринч","маска"})
     @ParameterizedTest(name = "Тестирование поиска фильмов по запросу: {0}")
